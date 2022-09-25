@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Quiz{% endblock title %}
+{% block body %}
+
+<form action="result" method="POST">
+  {% for i in new %}
+<div class="container">
+  <div class="card ">
+      <div class="card-body">
+        <h5 class="card-title">Question no:{{new.index(i)+1}} </h5>
+        <p class="card-text">
+          {{i.question}}
+        </p>
+        <div class="form-check">
+          <input name="options" type="radio" class="form-check-input" required="">
+          <label class="form-check-label" for="option1"> {{i.option1}} </label>
+        </div>
+        <div class="form-check">
+          <input name="options" type="radio" class="form-check-input" required="">
+          <label class="form-check-label" for="option2">{{i.option2}}</label>
+        </div>
+        <div class="form-check">
+          <input name="options" type="radio" class="form-check-input" required="">
+          <label class="form-check-label" for="option3">{{i.option3}}</label>
+        </div>
+        <div class="form-check">
+          <input name="options" type="radio" class="form-check-input" required="">
+          <label class="form-check-label" for="option4">{{i.option4}}</label>
+        </div>
+        </p>
+      </div>
+  </div>
+</div>
+{% endfor %}
+</form>
+
+
+
+{% endblock body %}

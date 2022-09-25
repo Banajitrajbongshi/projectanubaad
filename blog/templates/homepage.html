@@ -1,0 +1,42 @@
+{% extends 'base_homepage.html' %}
+{% load static %}
+{% block title %}গদ্য়-সম্ভাৰ{% endblock title %}
+{% block body %}
+<style>
+    img{
+        height: 260px;
+        width: 100%;
+    }
+    .card_body{
+      height:250px;
+    }
+    #author_name{
+      color: green;
+    }
+</style>
+<div class="container">
+  {% for i in products %}
+    <div class="container">
+      <div class="card border-4 mb-3" style="max-width:100%;">
+        <div class="row">
+          <div class="col-md-3 my-2 mx-1">
+            <center>
+                <img src="/media/{{i.image}}" alt="...">
+            </center>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"> {{i.title}} </h5>
+              <p class="card-text"><small class="text-muted"> {{i.date_time}} </small></p>
+              <p class="card-text" id="author_name"> ৰচনা :{{ i.author}}</p>
+              <p class="card-text"> {{i.contant|truncatewords:"50"|safe }} </p>
+              <p class="card-text"><small class="text-muted"> <a href="/blog/{{i.post_id}}">আগলৈ পঢ়ক.... </a></small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock body %}

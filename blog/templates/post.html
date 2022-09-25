@@ -1,0 +1,39 @@
+{% extends 'base_homepage.html' %}
+{% block title %} {{data.title}} {% endblock title %}
+{% block body %}
+<style>
+    #pub_date {
+        color: green;
+    }
+
+    #author {
+        color: rgb(65, 0, 228);
+    }
+</style>
+<br>
+<div class="container">
+    <center>
+        <h3>{{ data.title}}</h3>
+    </center>
+    <br>
+</div>
+<div class="container">
+    <img id="image" src="/media/{{ data.image }}" class="img-fluid"
+        alt="image cannot load due to slow internet connection">
+</div>
+<br>
+<div class="container">
+    <div class="container">
+        <p><b><small id="pub_date">প্ৰকাশ : {{data.date}}</small></b></p>
+        <p id="author"><b>ৰচনা : {{ data.author}} </b></p>
+        <br>
+        <p>{{data.contant|safe}}</p>
+    </div>
+    <br>
+    <div class="container">
+        <center><b>আমালৈ পঠিয়াইছে</b></center>
+        <center>নাম : {{data.author}} <br> ঠিকনা : {{data.author_address}} <br> যোগাযোগ : {{ data.author_mail}}
+        </center>
+    </div>
+</div>
+{% endblock body %}

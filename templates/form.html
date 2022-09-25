@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}আপোনাৰ লিখনি {% endblock title %}
+{% block body %}
+<style>
+  #floatingTextarea{
+    height: 200px;
+  }
+</style>
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+<br>
+<div class="container">
+  <form action="/form" method="POST">
+    {% csrf_token %}
+    <div class="row g-3">
+      <div class="col-sm-6">
+        <label for="firstName" class="form-label">আপোনাৰ নাম</label>
+        <input type="text" class="form-control" id="firstName" placeholder="নাম" name="name" required="">
+        <div class="invalid-feedback">
+          Valid Name is required.
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <label for="lastName" class="form-label">আপোনাৰ ই-মেইল বা ফোন নং </label>
+        <input type="text" class="form-control" id="lastName" name="email" placeholder="xyz@mail.in / 1234567890" required="">
+        <div class="invalid-feedback">
+          Valid email is required.
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label for="address" class="form-label">আপোনাৰ ঠিকনা</label>
+        <input type="text" class="form-control" id="address" name="address" placeholder="ঠিকনা" required="">
+        <div class="invalid-feedback">
+          Please enter your address.
+        </div>
+      </div>
+
+      <div class="form-floating">
+        <p>আপোনাৰ লিখনি </p>
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="content"
+          placeholder="paste here"></textarea>
+      </div>
+    </div>
+    <br>
+    <center><input class="btn btn-primary" type="submit" value="জমা কৰক"></center>
+  </form>
+</div>
+<script>
+  CKEDITOR.replace('content')
+</script>
+{% endblock body %}
